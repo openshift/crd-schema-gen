@@ -6,8 +6,8 @@ import:
 - package: gopkg.in/yaml.v2
 - package: k8s.io/apiextensions-apiserver
   repo: https://github.com/openshift/kubernetes-apiextensions-apiserver
-  version: 6e2b3eb1b401beaf836f640f73f730f6da7aff2f # pinned to get nullable patch
+  version: origin-4.1-kubernetes-1.13.4
 - package: k8s.io/apimachinery
 - package: sigs.k8s.io/controller-tools
-  version: master
+  version: origin-4.1-kubernetes-1.13.4
   repo: https://github.com/openshift/kubernetes-sigs-controller-tools.git
