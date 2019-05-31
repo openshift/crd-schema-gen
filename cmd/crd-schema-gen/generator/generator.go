@@ -56,7 +56,7 @@ func Run() error {
 	defer os.RemoveAll(tmpDir)
 
 	// copy APIs to temp dir
-	fmt.Printf("Copying vendor/github.com/openshift/api/config to temporary pkg/apis...\n")
+	fmt.Printf("Copying \"%s/\"%s to temporary \"%s\"...\n", *apisDir, *apis, filepath.Join(tmpDir, "pkg/apis"))
 	if err := os.MkdirAll(filepath.Join(tmpDir, "pkg/apis"), 0755); err != nil {
 		return err
 	}
