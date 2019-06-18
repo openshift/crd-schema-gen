@@ -10,14 +10,15 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/evanphx/json-patch"
+	jsonpatch "github.com/evanphx/json-patch"
 	"gopkg.in/yaml.v2"
 
 	"k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1beta1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	utilyaml "k8s.io/apimachinery/pkg/util/yaml"
-	crdgenerator "sigs.k8s.io/controller-tools/pkg/crd/generator"
+	crdgenerator "sigs.k8s.io/controller-tools/pkg/crd"
+	"sigs.k8s.io/controller-tools/pkg/genall"
 )
 
 var (
@@ -67,33 +68,28 @@ func Run() error {
 		return err
 	}
 
-	// generate kubebuilder KindGroupYaml manifests into temp dir
-	g := crdgenerator.Generator{
-		RootPath:          tmpDir,
-		Domain:            "openshift.io",
-		OutputDir:         filepath.Join(tmpDir, "manifests"),
-		SkipMapValidation: true,
+	tmpDirSplit := strings.Split(tmpDir, "/")
+	tmpDirName := tmpDirSplit[len(tmpDirSplit)-1]
+	crdGen := &crdgenerator.Generator{TrivialVersions: true}
+	rt, err := genall.Generators{crdGen}.ForRoots("./" + tmpDirName + "/pkg/...")
+	if err != nil {
+		return err
 	}
 
+	genOutputDir := filepath.Join(tmpDir, "manifests")
 	if len(*outputDir) != 0 {
-		g.OutputDir = *outputDir
-		fmt.Printf("Creating kubebuilder manifests %q ...\n", *outputDir)
-	} else {
-		fmt.Printf("Creating kubebuilder manifests ...\n")
+		genOutputDir = *outputDir
 	}
-
-	if err := g.ValidateAndInitFields(); err != nil {
-		return err
-	}
-	if err := g.Do(); err != nil {
-		return err
+	rt.OutputRules.Default = genall.OutputToDirectory(genOutputDir)
+	if err := rt.Run(); err {
+		return fmt.Errorf("error running generator")
 	}
 
 	// the generator changes the directory for some reason
 	os.Chdir(pwd)
 
 	// load kubebuilder manifests from temp dir
-	fromKubebuilder, err := crdsFromDirectory(g.OutputDir)
+	fromKubebuilder, err := crdsFromDirectory(genOutputDir)
 	if err != nil {
 		return err
 	}
