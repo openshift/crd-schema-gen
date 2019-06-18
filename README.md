@@ -16,7 +16,7 @@ Then from your operator's repository run:
 
 ```
 PKG=${PWD#${GOPATH}/}
-docker run -v ${PWD}:/go/${PKG}:Z -w /go/${PKG} openshift/origin-crd-schema-gen --apis-dir vendor/github.com/openshift/api
+docker run -v ${PWD}:/go/${PKG}:Z -w /go/${PKG} openshift/origin-crd-schema-gen --apis-dir vendor/github.com/openshift/api/operator/v1
 ```
 
 In this case we mount our local `manifests` directory where our CRDs reside and the local directory of our API definitions. Then pass the name of that location (relative to the crd-schema-gen GOPATH) to the container (`openshift/api`).
