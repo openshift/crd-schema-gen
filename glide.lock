@@ -1,23 +1,21 @@
-hash: ad523c5bba3ec243d4c34c7ecc7387cbf3ee03b935bc37ff99026b4d288f95b0
-updated: 2019-04-10T10:59:29.566232734-04:00
+hash: e468c3ba8c328fd59faa799dfbf8a76f8d8839cf378803fdc7871b0dec1bd5a9
+updated: 2019-07-01T10:37:40.084325835-04:00
 imports:
 - name: github.com/evanphx/json-patch
-  version: 36442dbdb585210f8d5a1b45e67aa323c197d5c4
-- name: github.com/ghodss/yaml
-  version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
+  version: 5858425f75500d40c52783dce87d085a483ce135
 - name: github.com/gobuffalo/envy
-  version: 1e6702b55a7afe795770f86ce76c13836a591904
+  version: 043cb4b8af871b49563291e32c66bb84378a60ac
 - name: github.com/gogo/protobuf
-  version: c0656edd0d9eab7c66d1eb0c568f9039345796f7
+  version: 342cbe0a04158f6dcb03ca0079991a51a4248c02
   subpackages:
   - proto
   - sortkeys
 - name: github.com/google/gofuzz
-  version: 44d81051d367757e1c7c6a5a86423ece9afcf63c
+  version: f140a6486e521aad38f5917de355cbf147cc0496
 - name: github.com/joho/godotenv
   version: 5c0e6c6ab1a0a9ef0a8822cba3a05d62f7dad941
 - name: github.com/json-iterator/go
-  version: ab8a2e0c74be9d3be70b3184d9acc634935ded82
+  version: 0ff49de124c6f76f8494e194af75bde0f1a49a29
 - name: github.com/markbates/inflect
   version: d582c680dc4d29c2279628ae00e743005bfcd4fe
 - name: github.com/modern-go/concurrent
@@ -25,59 +23,48 @@ imports:
 - name: github.com/modern-go/reflect2
   version: 94122c33edd36123c84d5368cfb2b69df93a0ec8
 - name: github.com/openshift/library-go
-  version: 2a2f9819d7a88342c84c27212c849727a4debb62
-- name: github.com/pkg/errors
-  version: 645ef00459ed84a119197bfb8d8205042c6df63d
+  version: 16a370625b52c7958783b8f74de58317236da6b4
 - name: github.com/rogpeppe/go-internal
-  version: 438578804ca6f31be148c27683afc419ce47c06e
+  version: 6f68bf1e81f8552c7dbd47f3bc4371c2db0941a6
   subpackages:
   - modfile
   - module
   - semver
-- name: github.com/spf13/afero
-  version: 588a75ec4f32903aa5e39a2619ba6a4631e28424
-  subpackages:
-  - mem
-- name: github.com/spf13/pflag
-  version: 583c0c0531f06d5278b7d917446061adc344b5cd
 - name: golang.org/x/net
-  version: 0ed95abb35c445290478a5348a7b38bb154135fd
+  version: 65e2d4e15006aab9813ff8769e768bbf4bb667a0
   subpackages:
-  - html
-  - html/atom
+  - http/httpguts
   - http2
   - http2/hpack
   - idna
-  - lex/httplex
-  - websocket
 - name: golang.org/x/text
-  version: b19bf474d317b857955b12035d2c5acb57ce8b01
+  version: e6919f6577db79269a6443b9dc46d18f2238fb5d
   subpackages:
   - secure/bidirule
   - transform
   - unicode/bidi
   - unicode/norm
 - name: golang.org/x/tools
-  version: 2382e3994d48b1d22acc2c86bcad0a2aff028e32
+  version: fdf1049a943acdab3a1008d66838170551d1dedb
   subpackages:
-  - go/ast/astutil
-  - imports
+  - go/gcexportdata
+  - go/internal/gcimporter
+  - go/internal/packagesdriver
+  - go/packages
+  - internal/fastwalk
+  - internal/gopathwalk
+  - internal/semver
 - name: gopkg.in/inf.v0
   version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
 - name: gopkg.in/yaml.v2
-  version: 670d4cfef0544295bc27a114dbac37980d83185a
-- name: k8s.io/api
-  version: 5cb15d34447165a97c76ed5a60e4e99c8a01ecfe
-  subpackages:
-  - rbac/v1
+  version: 51d6538a90f86fe93ac480b35f37b2be17fef232
 - name: k8s.io/apiextensions-apiserver
-  version: 6e2b3eb1b401beaf836f640f73f730f6da7aff2f
-  repo: https://github.com/openshift/kubernetes-apiextensions-apiserver
+  version: 2d36bfd0ff861d2a2cd103aee02d54611f8010eb
   subpackages:
   - pkg/apis/apiextensions
   - pkg/apis/apiextensions/v1beta1
 - name: k8s.io/apimachinery
-  version: 86fb29eff6288413d76bd8506874fddd9fccdff0
+  version: 7ae370969693753028c74c0c876eee17ddb1b15b
   subpackages:
   - pkg/api/resource
   - pkg/apis/meta/v1
@@ -108,26 +95,20 @@ imports:
   - pkg/util/yaml
   - pkg/watch
   - third_party/forked/golang/reflect
-- name: k8s.io/gengo
-  version: e17681d19d3ac4837a019ece36c2a0ec31ffe985
-  subpackages:
-  - args
-  - generator
-  - namer
-  - parser
-  - types
 - name: k8s.io/klog
-  version: 8139d8cb77af419532b33dfa7dd09fbc5f1d344f
-- name: sigs.k8s.io/controller-tools
-  version: 9023c7551a0d78f09b063fc41cefa8a23bb849ab
-  repo: https://github.com/openshift/kubernetes-sigs-controller-tools.git
+  version: 89e63fd5117f8c20208186ef85f096703a280c20
+- name: k8s.io/utils
+  version: c2654d5206da6b7b6ace12841e8f359bb89b443c
   subpackages:
-  - pkg/crd/generator
-  - pkg/crd/util
-  - pkg/internal/codegen
-  - pkg/internal/codegen/parse
-  - pkg/internal/general
-  - pkg/util
+  - pointer
+- name: sigs.k8s.io/controller-tools
+  version: cf8f8c9f83af535f1721ef3c77c4e0b106035352
+  subpackages:
+  - pkg/crd
+  - pkg/crd/markers
+  - pkg/genall
+  - pkg/loader
+  - pkg/markers
 - name: sigs.k8s.io/yaml
   version: fd68e9863619f6ec2fdd8625fe1f02e7c877e480
 testImports: []

@@ -8,3 +8,5 @@ import:
 - package: k8s.io/apimachinery
 - package: sigs.k8s.io/controller-tools
   version: master
+- package: golang.org/x/tools/go/packages
+  version: master
